@@ -41,13 +41,21 @@ class ExportIbpr implements FromView, WithEvents
                 $alphabet       = $event->sheet->getHighestDataColumn();
                 $totalRow       = $event->sheet->getHighestDataRow();
                 $cellRange      = 'A1:'.$alphabet.$totalRow;
+                $cellRangeBody      = 'A6:'.$alphabet.$totalRow;
                 $event->sheet->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
                 $event->sheet->getDelegate()->getStyle($cellRange)->getFont()->setName('Calibri')->setSize(11);
                 $event->sheet->getDelegate()
                             ->getStyle('A1:AC5')
                             ->getAlignment()
                             ->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER)
-                            ->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+                            ->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER)
+                            ->setWrapText(true);
+                $event->sheet->getDelegate()
+                            ->getStyle($cellRangeBody)
+                            ->getAlignment()
+                            ->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_TOP)
+                            ->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT)
+                            ->setWrapText(true);
                 $event->sheet->getDelegate()
                             ->getStyle('P2')
                             ->getAlignment()
