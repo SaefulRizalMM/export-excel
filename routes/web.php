@@ -19,5 +19,8 @@ Route::get('/', function () {
 });
 
 Route::controller(ExportExcelController::class)->group(function(){
+    Route::get('get-field-table', 'getFieldTable')->name('export.field');
+    Route::get('export/index', 'index')->name('export.index');
     Route::get('export/excel', 'exportIbpr')->name('export.excel');
+    Route::post('export/excel', 'dynamicExport')->name('export.dynamic');
 });
