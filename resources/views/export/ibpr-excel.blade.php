@@ -95,7 +95,7 @@
 		<th style="border: 1px solid black;border-collapse: collapse;background-color: #d8d8d8;align:center;">30</th>
 		<th style="border: 1px solid black;border-collapse: collapse;background-color: #d8d8d8;align:center;">31</th>
 	</tr>
-	@php $tempData1= ""; @endphp
+	@php $tempData1= ""; $tempData2= ""; @endphp
 	@foreach($data as $dt)
 		<tr>
 			@if($tempData1 != $dt->data1 )
@@ -105,8 +105,13 @@
 			<td style="border: 1px solid black;border-collapse: collapse;width:5;"></td>
 			<td style="border: 1px solid black;border-collapse: collapse;width:20;"></td>
 			@endif
+			@if($tempData2 != $dt->data1.'.'.$dt->data3)
 			<td style="border: 1px solid black;border-collapse: collapse;width:7;align:left;">{{ $dt->data3 }}</td>
 			<td style="border: 1px solid black;border-collapse: collapse;width:25;align:left;">{{ $dt->data4 }}</td>
+			@else
+			<td style="border: 1px solid black;border-collapse: collapse;width:7;align:left;"></td>
+			<td style="border: 1px solid black;border-collapse: collapse;width:25;align:left;"></td>
+			@endif
 			<td style="border: 1px solid black;border-collapse: collapse;width:15;align:left;">{{ $dt->data5 }}</td>
 			<td style="border: 1px solid black;border-collapse: collapse;width:10;align:left;">{{ $dt->data6 }}</td>
 			<td style="border: 1px solid black;border-collapse: collapse;width:35;align:left;">{{ $dt->data7 }}</td>
@@ -133,7 +138,7 @@
 			<td style="border: 1px solid black;border-collapse: collapse;width:7;align:left;">{{ $dt->data28 }}</td>
 			<td style="border: 1px solid black;border-collapse: collapse;width:23;align:left;">{{ $dt->data29 }}</td>
 		</tr>
-	@php $tempData1= $dt->data1; @endphp
+	@php $tempData1= $dt->data1; $tempData2= $dt->data1.'.'.$dt->data3; @endphp
 	@endforeach
 	</table>
 </body>

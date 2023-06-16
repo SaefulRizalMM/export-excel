@@ -86,7 +86,7 @@ class ExportIbpr implements FromView, WithEvents
     public function view(): View
     {
 
-        $data = Ibpr::all();
+        $data = Ibpr::orderBy('id')->get();
         
         return view('export.ibpr-excel', [
             'data' => $data
